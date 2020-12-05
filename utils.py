@@ -5,6 +5,29 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag
 from nltk.corpus import stopwords
+import time
+
+import pandas as pd
+import numpy as np
+import scipy
+
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+from sklearn.decomposition import PCA
+from sklearn import svm
+
+import matplotlib.pyplot as plt
+from matplotlib import cm
+
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+from sklearn import model_selection, svm
+from sklearn.metrics import accuracy_score, classification_report, plot_confusion_matrix
+import pickle
+
+from sklearn import model_selection, svm
 
 from sklearn.metrics import plot_confusion_matrix
 
@@ -12,6 +35,7 @@ import pandas as pd
 import numpy as np
 import io
 import base64
+import pickle
 
 import matplotlib.pyplot as plt
 
@@ -55,13 +79,13 @@ def load_dataset(filepath, output, truncate=False):
     email_df.to_pickle(output)
 
 
-def convert_text(text_list, tfidf):
-    clean_df = pd.DataFrame(columns=["clean_words"], dtype=object)
+def convert_text(text_list, label):
+    clean_df = pd.DataFrame(columns=["clean_text"], dtype=object)
 
     for index, text in enumerate(text_list):
         print("\n[*] Entry " + str(index))
-        print(text)
         word_list = word_tokenize(text.lower())
+        print(word_list)
 
         clean_words = []
         tag_map = word_tag()
@@ -71,40 +95,45 @@ def convert_text(text_list, tfidf):
                 clean_word = word_lem.lemmatize(word, tag_map[tag[0]])
                 clean_words.append(str(clean_word))
 
+        print(clean_words)
+        clean_df.loc[index, 'clean_text'] = str(clean_words)
+        clean_df.loc[index, 'label'] = label[index]
 
-        clean_df.loc[index, 'clean_words'] = str(clean_words)
-        df_tfidf = tfidf.transform(clean_df['clean_words'])
-
-    return df_tfidf
+    return clean_df
 
 
 def cf_64(svm, test_x, test_y):
     plot_confusion_matrix(svm, test_x, test_y)
-    plt.savefig("help.png")
     pic_IObytes = io.BytesIO()
     plt.savefig(pic_IObytes, format='png')
     pic_IObytes.seek(0)
     pic_enc = base64.b64encode(pic_IObytes.read())
     return pic_enc
 
+def retrain_model(email_df, size):
+    Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(email_df['clean_text'], email_df['label'].astype(int), test_size=size)
 
-def top_mean_feats(Xtr, features, grp_ids=None, min_tfidf=0.1, top_n=25):
-    if grp_ids:
-        D = Xtr[grp_ids].toarray()
-    else:
-        D = Xtr.toarray()
+    tfidf_vect = TfidfVectorizer(analyzer='word', stop_words='english', max_features=4000)
+    tfidf_vect.fit(email_df['clean_text'])
 
-    D[D < min_tfidf] = 0
-    tfidf_means = np.mean(D, axis=0)
-    return top_tfidf_feats(tfidf_means, features, top_n)
+    Train_X = tfidf_vect.transform(Train_X)
+    Test_X = tfidf_vect.transform(Test_X)
 
+    SVM = svm.SVC(C=1.0, kernel='linear', degree=3, gamma='auto', probability=True)
+    SVM.fit(Train_X, Train_Y)
 
-def top_feats_by_class(Xtr, y, features, min_tfidf=0.1, top_n=25):
-    dfs = []
-    labels = np.unique(y)
-    for label in labels:
-        ids = np.where(y==label)
-        feats_df = top_mean_feats(Xtr, features, ids, min_tfidf=min_tfidf, top_n=top_n)
-        feats_df.label = label
-        dfs.append(feats_df)
-    return dfs
+    predictions_SVM = SVM.predict(Test_X)
+    print("SVM Accuracy Score -> ", accuracy_score(predictions_SVM, Test_Y)*100)
+    #=========== Training ==============
+
+    #=========== Saving model ===========
+
+    accuracy = "SVM Accuracy Score -> ", accuracy_score(predictions_SVM, Test_Y)*100
+    report = classification_report(Test_Y, predictions_SVM)
+    print(report)
+    # cfm = cf_64(SVM, Test_X, Test_Y)
+
+    filename = "svm_model_" + str(time.time()) + ".pkl"
+    # pickle.dump(email_df, open('data.pkl', 'wb'))
+    pickle.dump({'dataset': email_df, 'model': SVM, 'report': report, 'accuracy': accuracy, 'vector': tfidf_vect, 'training': size}, open(filename, 'wb'))
+    return filename

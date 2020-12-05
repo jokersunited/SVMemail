@@ -1,0 +1,209 @@
+Since you created your Google Analytics account, we've changed the way we send important updates. You're not currently receiving the latest information from Google Analytics.  We recommend that users enable these updates to get important information on feature launches, performance suggestions, and offers from Google Analytics. 
+
+
+
+*********************************************************************************************************************************
+
+
+Melbourne Australia
+382 Channel Drive
+Tel-+61384004707
+Fax-+61370039254
+
+Attn Lucky Winner
+
+The Team of Mega Million is Pleased to officially announce you as the Third place prize winner of the Ten Million ($10,500.000.00) prize draw sponsored by OZ Australia. The total amount to be claimed for Fourth place is Five Million Dollars ($500,000.000). Congratulations! Global Mega Millions will make all necessary arrangements for you to receive your prize. Please contact your Claims Agent or representative immediately to avoid delays as you can contact him via e-mail:  jamesschofield989@gmail.com or through telephone and fax listed below. Also be informed that 10% of your Winning belongs to Oz Group Limited because they are the promotion and legal company that assign to your claim, this 10 percent will be paid only after you have received your awarded prize (money).
+
+Three (3) certificates are to be issued to you by the Local government concerned offices to legally back up your claim through the promotional company (Tatts Group Limited). Unclaimed winning prize are used for education programs, treatment programs, and to increase future prize pools.
+
+Your Claims Agent is: Mr. James Schofield in Australia Tel- +613-383757100 (Fax- +61381035050).
+
+Your Security Code is: H649PC32 As required by US Federal, AUS and State laws, your Security code and Prize information must be kept strictly confidential which means that you are precluded from discussing your win with 3rd parties such as (family members, friends and relatives).This is to prevent unlawful tampering and a means to reduce risks of fraud and scams from taking place and also Due to false practices, we ask that you keep your award information strictly from public notice, until your claim has been processed and money remitted to your possession as this is part of our security protocol to avoid double claiming or unwarranted abuse of this program by unscrupulous individuals.
+
+As soon as we verify your identity and Security Code number from you, we will immediately release your total sum through wire transfer into your nominated bank account or platinum automated card will be issued with withdrawal analysis according to the global financial law guiding lottery release through (ATM).
+
+Your email initial was used for the raffle draw and you emerged a lucky winner.
+
+Once again, Congratulations
+
+Betty Thompson
+Mega Millions Lotto Coordinator
+E-mail: bety.thompson44@gmail.com
+
+
+
+
+*********************************************************************************************************************************
+
+
+
+
+As part of this process, your old security info will be deleted and your contact email
+
+Click the button below to finish update and active your info.
+
+ 
+Restore Account Límíted
+
+Thanks,
+
+The Pay-Pal Support
+
+We scan messages to enforce policies. Only purchases on eBay are covered by the Pay-Pal purchase protection programs. Asking your trading partner to complete a transaction outside of Pay-Pal is not allowed.
+ 
+
+Pay-Pal sent this message to email . Learn more about account protection. Pay-Pal is committed to your privacy. Learn more about our privacy notice and user agreement.
+
+
+
+
+
+*********************************************************************************************************************************
+
+
+
+
+Pay Pal Account
+Account Info
+Your account has just closed temporarily, because there is suspicious activity on your account. To avoid unwanted things, we took action to close your account temporarily. Immediate update and re-activate your account. .
+As part of this process, your old security info will be deleted and your contact email
+Click the button below to finish update and active your info.
+Update and Active Your Account
+Thanks,
+The Pay Pal Account Team
+
+
+
+
+*********************************************************************************************************************************
+
+
+
+http://darklove.space/forsupermanonlyy3
+
+WARNING: This website contains explicit pictures, videos, stories, images,
+or sounds
+You must be 18 yearmarianve90s of age or older to enter. If you are under
+18, or if it is forbidden to view this content in your community, you must
+leave this site.
+
+
+
+
+*********************************************************************************************************************************
+
+
+-----
+To stop receiving emails, please write us or email us at the following
+addresses:
+
+Direct Engineering Ltd.
+Poland Warsaw Cherwowska 12-44
+stoplist@directengineering.biz
+ or
+Stallion.com FSC Limited
+12 Kingslyn Ave., Kingston, W.I. 10 JM
+marianve90@xxxcupid.com
+
+
+
+
+*********************************************************************************************************************************
+
+
+
+
+Hello,
+
+For your protection, we have suspended your account because we detected unusual sign-in activity on your account. You can help us unlock your account by click on the button link and following the on-screen instructions.
+
+
+ 
+
+Possible events occurred
+
+    Log in attempts from an unusual or unrecognized device or location.
+
+    Requesting any operation using unusual pattern.
+
+    Fraud activity from your account. 
+
+ 
+
+For security, all your account services are disabled until response has been received from you.
+
+Please verify your account details, If you do not verify within 24 hours (from opening this email) will be officially permanently disabled.
+
+
+Verify account
+
+
+Thank you,
+Amazon
+
+Date : October, 26 2020 PDT
+
+
+
+
+*********************************************************************************************************************************
+
+
+
+
+Reminder Notice
+
+Your account has been filtered by our system for authentication. Please view the possible events listed below for this cause
+
+ 
+
+Possible events occurred
+
+        Log in attempts from an unusual or unrecognized device or location.
+
+        Requesting any operation using unusual pattern.
+
+
+    Too many incorrect log in attempts.
+
+ 
+
+For security, all your account services are restricted until a response has been received from you.
+
+Please click "Resolution Centre" button below to confirm your account.
+
+
+Resolution Centre
+
+
+Regards,
+Resolution
+
+Date : October, 20 2020 PDT
+
+
+(Europe) S.࠲.l. et Cie, S.C.A. is duly licenced as a Luxembourg credit institution in the sense of Article 2 of the law of October, 20 2020 PDT on the financial sector as amended and is under the prudential supervision of the Luxembourg supervisory authority, the Commission de Surveillance du Secteur Financier, with registered office in L-1150 Luxembourg.
+
+
+
+
+
+*********************************************************************************************************************************
+
+
+
+
+<div class="container" style="min-height:100%; width:100%; max-width:100%">
+                                    {% with messages = get_flashed_messages() %}
+                                      {% if messages %}
+                                        {% for message in messages %}
+                                          <div class="alert alert-warning alert-dismissible" role="alert" style="min-height:100% width:100%">
+                                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            {{message}}
+                                          </div>
+                                        {% endfor %}
+                                      {% endif %}
+                                    {% endwith %}
+                                    
+                                    {% block body %}{% endblock %}
+                    </div>
